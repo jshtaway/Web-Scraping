@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather By Region</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
+</head>
+<body>
+    <div class='description jumbotron row' >
+            <div class="container" >
+                    <h1 class="display-3">Mars</h1>
+                    <p>
+                        All you need to know for your next trip to Mars, in one place.
+                    </p>
+                    </div>
+        <style>
+                body {background-color:'#cccccc';}
+                .description {
+                    background: url('{{ mars['space_images'] }}');
+                    background-size: contain;
+                    color:white;
+                }
+            </style>
+    </div>
+    <div>
+        <div>
+                <h2>Latest tweet from Mars:</h2>
+                <p>{{ mars['featured_image_url'] }}</p>
+            </div>
+            <!-- hemisphere_image_urls.append({'title': title, 'url': link}) -->
+        <div>
+            <h2>Images of Mars</h2>
+            {% for image in mars['mars_hemispheres'] %}
+            <p><a class="btn btn-secondary" href="{{ image.url }}" role="button">{{ image.title }} &raquo;</a></p>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div>
+        <h2>Fun Facts!</h2>
+        {% include 'table.html' %}
+    </div>
+    
+    
+</body>
+</html>
